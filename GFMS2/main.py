@@ -27,7 +27,7 @@ def DTSYS(): return(int(''.join(str(datetime.datetime.now())[0:10].split('-'))),
 CMD = '' #input controller
 CUR_SUB = 'INIT' #indicator for the current subprocess running
 #SUB_LIST The list of tabs including CUR_SUB
-OUT = []
+OUT = [] #the output from the plugin
 
 #main
 while CMD != 'TERMINATE':
@@ -45,5 +45,5 @@ while CMD != 'TERMINATE':
         elif CMD.split(' ')[0] == 'SCROLL':
             pass
         else:
-            SCRO = SUB_LIST[SUB_LIST.index(CUR_SUB)][1].CMD(CMD)
+            OUT = SUB_LIST[SUB_LIST.index(CUR_SUB)][1].CMD(CMD)
     CMD = input('CMD: ')
