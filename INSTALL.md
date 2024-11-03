@@ -4,7 +4,7 @@ With Git the installation is very easy. Simply clone this repository, either thr
 ```
 	git clone https://github.com/gantnitsa/GFMS2
 ```
-Then to run GFMS2, run the terminal command in the GFMS2 directory:
+Then to run GFMS2, run the terminal command in the Base_Stable_v0-0-1 directory:
 ```
 	python main.py
 ```
