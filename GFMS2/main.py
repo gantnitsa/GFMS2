@@ -13,6 +13,10 @@ for i in TAB_LIST:
     exec(f'SUB_LIST += [["{i}", {i}.{i}()]]')
 del TAB_LIST
 
+#Cmd config
+with open('resources\\Config', 'r') as FH:
+    commands = FH.read().split('\n')
+
 #fn
 def assemble():
     POUT = []
@@ -44,7 +48,7 @@ SUB_PAGE = 1
 OUT = [[], ''] #plugin output
 
 #main
-while CMD != 'terminate':
+while CMD != commands[0]:
     os.system('cls')
     if int(''.join(str(os.get_terminal_size())[25:len(str(os.get_terminal_size()))][i] for i in range(len(str(os.get_terminal_size())[25:len(str(os.get_terminal_size()))])) if not ',' in str(os.get_terminal_size())[25:len(str(os.get_terminal_size()))][0:(i + 1)])) < 140 and CUR_SUB != 'WIDTH_ERROR':
         print('\x1b[38;2;255;;mPLEASE RESIZE SCREEN WIDTH TO 140 CHARS\x1b[0m')
@@ -54,13 +58,13 @@ while CMD != 'terminate':
         if CUR_SUB in ('WIDTH_ERROR', 'INIT'):
             CUR_SUB = 'HOME'
             OUT = [[], '']
-        if CMD.split(' ')[0] == 'switch':
-            if CMD != 'switch' and len(CMD.split(' ')) == 2 and CMD.split(' ')[1] in [i[0] for i in SUB_LIST]:
+        if CMD.split(' ')[0] == commands[2]:
+            if CMD != commands[2] and len(CMD.split(' ')) == 2 and CMD.split(' ')[1] in [i[0] for i in SUB_LIST]:
                 CUR_SUB = CMD.split(' ')[1]
                 OUT = SUB_LIST[list(i[0] for i in SUB_LIST).index(CUR_SUB)][1].CMD('', DTSYS())
             else:
                 OUT[1] = '\033[38;2;255;;mINVALID\033[0m'
-        elif CMD.split(' ')[0] == 'scroll':
+        elif CMD.split(' ')[0] == commands[1]:
             if len(CMD.split(' ')) == 2:
                 try:
                     if int(CMD.split(' ')[1]) > 0:
