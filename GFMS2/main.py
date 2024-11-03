@@ -56,12 +56,12 @@ while CMD != 'TERMINATE':
     else:
         for i in TOP(): print(i)
         if CUR_SUB in ('WIDTH_ERROR', 'INIT'):
-            CUR_SUB = 'NIL'
+            CUR_SUB = 'HOME'
             OUT = [[], '']
         if CMD.split(' ')[0] == 'SWITCH':
             if CMD != 'SWITCH' and len(CMD.split(' ')) == 2 and CMD.split(' ')[1] in [i[0] for i in SUB_LIST]:
-                CUR_SUB == CMD.split(' ')[1]
-                OUT = SUB_LIST[SUB_LIST.index(CUR_SUB)][1].CMD('INIT', DTSYS())
+                CUR_SUB = CMD.split(' ')[1]
+                OUT = SUB_LIST[list(i[0] for i in SUB_LIST).index(CUR_SUB)][1].CMD('', DTSYS())
             else:
                 OUT[1] = '\033[38;2;255;;mINVALID\033[0m'
         elif CMD.split(' ')[0] == 'SCROLL':
@@ -75,7 +75,7 @@ while CMD != 'TERMINATE':
                     SUB_PAGE = 1
                     OUT[1] = '\033[38;2;255;;mNOT A NUMBER\033[0m'
             OUT[1] = '\033[38;2;255;;mINVALID\033[0m'
-        elif CUR_SUB != 'NIL':
-            OUT = SUB_LIST[SUB_LIST.index(CUR_SUB)][1].CMD(CMD, DTSYS())
+        else:
+            OUT = SUB_LIST[list(i[0] for i in SUB_LIST).index(CUR_SUB)][1].CMD(CMD, DTSYS())
         for j in assemble(): print(j)
     CMD = input('CMD: ')
