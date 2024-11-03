@@ -25,15 +25,15 @@ def assemble():
             POUT += [k]
         POUT += ['\n']
     for i in range(30): POUT += ['\n']
-    PPOUT = [f' Current Tab: {CUR_SUB}', f'\033[38;2;128;;128m{'▄'*100}\033[0m', '']
-    while len(PPOUT) < 32:
+    PPOUT = [f' Current Tab: {CUR_SUB}', f'\033[38;2;128;;128m{'▄'*100}\033[0m', ' ']
+    while len(PPOUT) < 33:
         if POUT[0] == '\n':
-            PPOUT.append('')
+            PPOUT.append(' ')
         elif len(PPOUT[len(PPOUT) - 1]) == 100:
-            PPOUT.append(POUT[0])
+            PPOUT.append(' ' + POUT[0])
         else:
             PPOUT[len(PPOUT) - 1] += POUT[0]
-        POUT = POUT[0:-1]
+        POUT = POUT[1:len(POUT)]
     del POUT
     PTABS = ([f'Tab Page: {SUB_PAGE}{' '*39}'[0:39] + '\033[38;2;128;;128m█\033[0m', f'\033[38;2;128;;128m{'▄'*39}\033[0m\033[38;2;128;;128m█\033[0m'] + [(str(i + 1) + '. ' + SUB_LIST[i][0] + ' '*39)[0:39] + '\033[38;2;128;;128m█\033[0m' for i in range(len(SUB_LIST))][slice((SUB_PAGE - 1)*30, SUB_PAGE*30)] + [f'{' '*39}\033[38;2;128;;128m█\033[0m' for i in range(32)])[0:32]
     return([PTABS[i] + PPOUT[i] for i in range(32)] + [f'\033[38;2;128;;128m{'▄'*39}█{'▄'*100}\033[0m', f'\033[38;2;;200;mPREV_CMD: {CMD}\033[0m', OUT[1]])
