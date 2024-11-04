@@ -62,7 +62,7 @@ while CMD != commands[0]:
         if CMD.split(' ')[0] == commands[2]:
             if CMD != commands[2] and len(CMD.split(' ')) == 2 and CMD.split(' ')[1] in [i[0] for i in SUB_LIST]:
                 CUR_SUB = CMD.split(' ')[1]
-                OUT = SUB_LIST[list(i[0] for i in SUB_LIST).index(CUR_SUB)][1].CMD('', DTSYS())
+                OUT = SUB_LIST[list(i[0] for i in SUB_LIST).index(CUR_SUB)][1].CMD('Init', DTSYS())
             else:
                 OUT[1] = '\033[38;2;255;;mInvalid\033[0m'
         elif CMD.split(' ')[0] == commands[1]:
