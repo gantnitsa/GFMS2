@@ -15,7 +15,7 @@ del TAB_LIST
 
 #Cmd config
 with open('Config', 'r') as FH:
-    commands = FH.read().split('\n')
+    commands = list(i.split(' ')[0] for i in FH.read().split('\n'))
 
 #fn
 def assemble():
@@ -58,7 +58,6 @@ while CMD != commands[0]:
         for i in ("   ____   _____   __  __   ____    ____  ", "  / ___| |  ___| |  \\/  | / ___|  |___ \\ " + " "*87 + "\x1b[38;2;;255;mLAST REFRESH\x1b[0m", " | |  _  | |_    | |\\/| | \\___ \\    __) |" + " "*88 + f'\x1b[38;2;;200;m{str(datetime.datetime.now())[8:10] + ' ' + ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC')[int(str(datetime.datetime.now())[5:7]) - 1] + ' ' + str(datetime.datetime.now())[0:4]}\x1b[0m', " | |_| | |  _|   | |  | |  ___) |  / __/ " + " "*94 + f'\x1b[38;2;;200;m{str(datetime.datetime.now())[11:16]}\x1b[0m', "  \\____| |_|     |_|  |_| |____/  |_____|", f'\033[38;2;128;;128m{'▄'*140}\033[0m'): print(i)
         if CUR_SUB in ('width_error', 'init'):
             CUR_SUB = 'home'
-            OUT = [[], '']
         if CMD.split(' ')[0] == commands[2]:
             if CMD != commands[2] and len(CMD.split(' ')) == 2 and CMD.split(' ')[1] in [i[0] for i in SUB_LIST]:
                 CUR_SUB = CMD.split(' ')[1]

@@ -1,0 +1,6 @@
+GFMS2 means General File Management Software 2. Wonder where 1 went?
+Do people actually read these? (Sneaky Minecraft reference :>)
+You can add your own facts here(*whatever dirname GFMS2 is in*\resources\home\Facts.txt)!
+The TMAS plugin in the wiki has a secret message... Can you decipher it?
+More developments are coming soon! (Ah who am I kidding.)
+Thank you for helping us reinvent the wheel by downloading this.
